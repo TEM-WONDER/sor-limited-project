@@ -1,11 +1,11 @@
 resource "azurerm_resource_group" "rg" {
   name     = "${random_pet.prefix.id}-rg"
-  location = "uksouth"
+  location = var.resource_group_location
 }
 
 resource "random_pet" "prefix" {
-  length    = 1
-  prefix = "sor"
+  length = 1
+  prefix = var.resource_group_name_prefix
 }
 
 resource "azurerm_virtual_network" "my_terraform_network" {

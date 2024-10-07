@@ -1,0 +1,20 @@
+# .gitignore
+
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+Backend/
+scripts/
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+*.pub
