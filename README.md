@@ -94,7 +94,7 @@ sor-limited-project/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/sor-limited-project.git
+git clone https://github.com/TEM-WONDER/sor-limited-project.git
 cd sor-limited-project
 ```
 
