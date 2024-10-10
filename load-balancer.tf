@@ -1,4 +1,4 @@
-# Define LB
+# Create a Load Balancer
 resource "azurerm_lb" "lb" {
   name                = "${random_pet.prefix.id}-lb"
   location            = azurerm_resource_group.rg.location
@@ -12,12 +12,14 @@ resource "azurerm_lb" "lb" {
   }
 }
 
+#Create a backend address pool
 resource "azurerm_lb_backend_address_pool" "bap" {
   name                = "${random_pet.prefix.id}-bap"
   #resource_group_name = azurerm_resource_group.rg.name
   loadbalancer_id     = azurerm_lb.lb.id
 }
 
+#Craete a health probe
 resource "azurerm_lb_probe" "probe" {
   name                = "${random_pet.prefix.id}-probe"
   #resource_group_name = azurerm_resource_group.rg.name
@@ -28,6 +30,7 @@ resource "azurerm_lb_probe" "probe" {
   number_of_probes    = 2
 }
 
+# Create a load balancer rule
 resource "azurerm_lb_rule" "rule" {
   name                     = "${random_pet.prefix.id}-rule"
   #resource_group_name      = azurerm_resource_group.rg.name
@@ -41,12 +44,14 @@ resource "azurerm_lb_rule" "rule" {
   backend_port            = 80
 }
 
+# Create a network interface backend address pool association
 resource "azurerm_network_interface_backend_address_pool_association" "association-vm1" {
   network_interface_id    = azurerm_network_interface.nic1.id
   ip_configuration_name   = "internal"
   backend_address_pool_id = azurerm_lb_backend_address_pool.bap.id
 }
 
+# Create a network interface backend address pool association
 resource "azurerm_network_interface_backend_address_pool_association" "association-vm2" {
   network_interface_id    = azurerm_network_interface.nic2.id
   ip_configuration_name   = "internal"

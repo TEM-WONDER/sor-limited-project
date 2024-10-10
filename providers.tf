@@ -1,3 +1,4 @@
+# Description: This file is used to define the required providers for the Terraform configuration.
 terraform {
   required_providers {
     azurerm = {
@@ -12,6 +13,7 @@ terraform {
   }
 }
 
+# Configure the Azure provider
 provider "azurerm" {
   features {}
 }

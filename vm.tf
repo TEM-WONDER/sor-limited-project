@@ -1,3 +1,4 @@
+# Description: This file contains the code to create two virtual machines in the same resource group and availability set.
 resource "azurerm_availability_set" "avset" {
   name                         = "sor-avset"
   resource_group_name          = azurerm_resource_group.rg.name
@@ -7,6 +8,7 @@ resource "azurerm_availability_set" "avset" {
   platform_update_domain_count = 5
 }
 
+# create a virtual machine in Azure
 resource "azurerm_virtual_machine" "vm1" {
   name                          = "${random_pet.prefix.id}-vm1"
   location                      = azurerm_resource_group.rg.location
@@ -44,6 +46,8 @@ resource "azurerm_virtual_machine" "vm1" {
   }
 }
 
+# create a virtual machine in Azure
+# Create a second virtual machine
 resource "azurerm_virtual_machine" "vm2" {
   name                          = "${random_pet.prefix.id}-vm2"
   location                      = azurerm_resource_group.rg.location

@@ -23,6 +23,7 @@ resource "azurerm_network_interface" "nic2" {
   }
 }
 
+# Create a network security group
 resource "azurerm_network_security_group" "private_nsg" {
   name                = "private_nsg"
   location            = azurerm_resource_group.rg.location
@@ -76,7 +77,7 @@ resource "azurerm_network_security_group" "private_nsg" {
     destination_address_prefix = "0.0.0.0/0"
   }
 }
-
+# Associate the network security group with the subnet
 resource "azurerm_subnet_network_security_group_association" "subnet_2_nsg" {
   subnet_id                 = azurerm_subnet.my_terraform_subnet_2.id
   network_security_group_id = azurerm_network_security_group.private_nsg.id

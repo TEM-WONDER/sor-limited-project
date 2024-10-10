@@ -1,3 +1,4 @@
+# create a bastion host in Azure
 resource "azurerm_bastion_host" "bastion" {
   name                = "${random_pet.prefix.id}-bastion"
   location            = azurerm_resource_group.rg.location
@@ -9,7 +10,7 @@ resource "azurerm_bastion_host" "bastion" {
   }
 }
 
-
+# create a public IP address for the bastion host
 resource "azurerm_public_ip" "public_ip" {
   name                = "${random_pet.prefix.id}-public-ip"
   location            = azurerm_resource_group.rg.location
